@@ -2,6 +2,7 @@ package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
 
+import java.sql.PreparedStatement;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
@@ -12,7 +13,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void createUsersTable() {
-
+        //PreparedStatement
     }
 
     @Override
