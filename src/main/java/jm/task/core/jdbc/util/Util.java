@@ -1,7 +1,6 @@
 package jm.task.core.jdbc.util;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -15,9 +14,7 @@ public class Util {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);     //params: dbURL, dbUsername, dbPassword
-            if (!connection.isClosed()) {
-                System.out.println("Соединение установлено!");
-            }
+
         } catch (SQLException e) {
             System.err.println(("Не удалось подключиться"));
         } catch (ClassNotFoundException e) {

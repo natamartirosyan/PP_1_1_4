@@ -25,11 +25,10 @@ public class UserServiceImpl implements UserService {
     }
 
     public List<User> getAllUsers() {
-
-        return null;
+        return userdao.getAllUsers();
     }
 
     public void cleanUsersTable() {
-
+        userdao.cleanUsersTable();
     }
 }
