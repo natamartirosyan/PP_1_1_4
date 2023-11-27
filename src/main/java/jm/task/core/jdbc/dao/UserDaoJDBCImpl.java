@@ -9,16 +9,16 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
     private static Connection connection = Util.getConnection();
-    private final String CREATE_TABLE = "create table if not exists Users " +
+    private final String CREATE_TABLE = "create table if not exists User " +
             "(id int primary key auto_increment, " +
             "name varchar(255) not null, " +
             "lastName varchar(255) not null, " +
             "age int not null);";
-    private final String DELETE_TABLE = "drop table if exists Users;";
-    private final String ADD_USER = "insert into Users (name, lastname, age) values (?, ?, ?);";
-    private final String DELETE_USER = "delete from users where id = ?;";
-    private final String GET_ALL = "select * from Users";
-    private final String CLEAN_TABLE = "delete users from users;";
+    private final String DELETE_TABLE = "drop table if exists User;";
+    private final String ADD_USER = "insert into User (name, lastname, age) values (?, ?, ?);";
+    private final String DELETE_USER = "delete from User where id = ?;";
+    private final String GET_ALL = "select * from User;";
+    private final String CLEAN_TABLE = "truncate table User;";
 
     public UserDaoJDBCImpl() {
 
@@ -47,7 +47,6 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.setByte(3, (byte) age);
             statement.executeUpdate();
 
-            System.out.printf("User с именем %s добавлен в базу данных \n", name);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
