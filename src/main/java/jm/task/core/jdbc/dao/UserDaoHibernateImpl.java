@@ -2,7 +2,6 @@ package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
-import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
@@ -11,13 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
-    Configuration config = new Configuration().addAnnotatedClass(User.class);
-    //SessionFactory factory = config.buildSessionFactory();
-    Transaction tx;
+
+    private Transaction tx;
     @Override
     public void createUsersTable() {
         try (Session session = Util.getSessionFactory().openSession()) {
-            tx = session.beginTransaction();
+            Transaction tx = session.beginTransaction();
             session.createSQLQuery("create table if not exists User " +
                     "(id int primary key auto_increment, " +
                     "name varchar(255) not null, " +
@@ -70,7 +68,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
-        List<User> users = new ArrayList<>();
+        List<User> users;
         try (Session session = Util.getSessionFactory().openSession()) {
             tx = session.beginTransaction();
             users = session.createQuery("from User").getResultList();
