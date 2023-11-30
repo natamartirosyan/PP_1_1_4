@@ -17,11 +17,11 @@ public class Main {
         userService.saveUser("Ringo", "Starr", (byte) 28);
         userService.saveUser("George", "Harrison", (byte) 25);
 
-//        List<User> list = userService.getAllUsers();
-//        for (User user : list) {
-//            System.out.println(user);
-//        }
-//        userService.cleanUsersTable();
-//        userService.dropUsersTable();
+        List<User> list = userService.getAllUsers();
+        for (User user : list) {
+            System.out.println(user);
+        }
+        userService.cleanUsersTable();
+        userService.dropUsersTable();
     }
 }

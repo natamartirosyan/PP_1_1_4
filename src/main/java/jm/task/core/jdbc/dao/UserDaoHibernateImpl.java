@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
     Configuration config = new Configuration().addAnnotatedClass(User.class);
-    SessionFactory factory = config.buildSessionFactory();
+    //SessionFactory factory = config.buildSessionFactory();
     Transaction tx;
     @Override
     public void createUsersTable() {
